@@ -273,7 +273,7 @@ jdbc.password=root
 
 ###### 步骤2:开启`context`命名空间
 
-在applicationContext.xml中开`context`命名空间
+在applicationContext.xml中开`context`命名空间（xmlnamespace:context）
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
