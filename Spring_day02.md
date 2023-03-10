@@ -641,7 +641,7 @@ ApplicationContext ctx = new FileSystemXmlApplicationContext("applicationContext
 ApplicationContext ctx = new FileSystemXmlApplicationContext("D:\\workspace\\spring\\spring_10_container\\src\\main\\resources\\applicationContext.xml"); 
 ```
 
-**说明:**大家练习的时候，写自己的具体路径。
+**说明:** 大家练习的时候，写自己的具体路径。
 
 这种方式虽能实现，但是当项目的位置发生变化后,代码也需要跟着改,耦合度较高,不推荐使用。
 
