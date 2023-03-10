@@ -1590,6 +1590,13 @@ http://localhost:8081
 </distributionManagement>
 ```
 
+```xml
+    <---上传到snapshot私服的快照仓库中--->
+    <groupId>com.itheima</groupId>
+    <artifactId>maven_04_dao</artifactId>
+    <version>1.0-SNAPSHOT</version>
+```
+
 #### 步骤2:发布资源到私服
 
 ![1630992305191](assets/1630992305191.png)
