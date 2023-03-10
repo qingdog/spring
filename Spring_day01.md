@@ -1415,7 +1415,7 @@ public class BookDaoImpl implements BookDao {
   ctx.registerShutdownHook();
   ```
 
-  **注意:**registerShutdownHook在ApplicationContext中也没有
+  **注意:** registerShutdownHook在ApplicationContext中也没有
 
 * 运行后，查询打印结果
 
@@ -1781,7 +1781,7 @@ value:后面跟的是简单数据类型，对于参数类型，Spring在注入�
 
 ![1629800324721](assets/1629800324721.png)
 
-**注意:**两个property注入标签的顺序可以任意。
+**注意:** 两个property注入标签的顺序可以任意。
 
 对于setter注入方式的基本使用就已经介绍完了，
 
@@ -1985,7 +1985,7 @@ public class BookServiceImpl implements BookService{
 </beans>
 ```
 
-**说明:**这两个`<contructor-arg>`的配置顺序可以任意
+**说明:** 这两个`<contructor-arg>`的配置顺序可以任意
 
 ##### 步骤3:运行程序
 
@@ -2045,7 +2045,7 @@ public class BookDaoImpl implements BookDao {
 </beans>
 ```
 
-**说明:**这两个`<contructor-arg>`的配置顺序可以任意
+**说明:** 这两个`<contructor-arg>`的配置顺序可以任意
 
 ##### 步骤3:运行程序
 
