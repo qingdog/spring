@@ -2197,6 +2197,58 @@ public class SpringMvcConfig implements WebMvcConfigurer {
 
 此后咱们就不用再写`SpringMvcSupport`类了。
 
+
+
+>1. WebMvcConfigurationSupport：是Spring MVC的核心配置类，它提供了许多默认的Spring MVC配置，并允许您通过继承它并覆盖其中的方法来自定义您的Spring MVC配置。WebMvcConfigurationSupport是一个抽象类，它实现了WebMvcConfigurer接口，并提供了一些默认实现。在使用Spring MVC时，通常会创建一个类来继承WebMvcConfigurationSupport，并覆盖其中的方法来实现自定义配置。
+>
+>2. WebMvcConfigurer：是一个接口，用于配置Spring MVC的行为和功能。它包含一组默认方法，允许您添加拦截器、资源处理程序、视图控制器等，以及其他一些Spring MVC的配置。通过实现WebMvcConfigurer接口，您可以自定义Spring MVC的行为和功能，而无需继承WebMvcConfigurationSupport或WebMvcConfigurerAdapter类。
+>
+>3. WebMvcConfigurerAdapter：是WebMvcConfigurer接口的一个抽象类，它提供了一些默认实现。它被用作WebMvcConfigurationSupport中WebMvcConfigurer实现的替代方案，但自Spring 5.0版本起已被废弃。
+>
+>   
+>
+>如果使用了@EnableWebMvc注解来开启Spring MVC的自动配置，那么WebMvcConfigurationSupport将会被自动配置，并且不需要显式地继承它。
+>
+>```
+>@Import({DelegatingWebMvcConfiguration.class})
+>public @interface EnableWebMvc {}
+>
+>public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {}
+>```
+>
+>1、在这种情况下，可以直接实现WebMvcConfigurer接口，并在其中添加静态资源的处理程序，以确保静态资源可以被访问。
+>
+>2、而使用@ComponentScan注解扫描继承WebMvcConfigurationSupport的类时可以正常访问静态资源，而使用@Import({SpringMvcSupport.class})时**无法访问静态资源**（需要删除@EnableWebMvc才能正常访问）。
+>
+>
+>
+>WebMvcConfigurerAdapter已经在Spring Boot 2.x版本中被废弃了，建议改用WebMvcConfigurer接口代替。
+>
+>在Spring Boot 2.x中，使用WebMvcConfigurer接口替代WebMvcConfigurerAdapter，并重写addResourceHandlers方法来处理静态资源的映射。因此，您需要在SpringMvcSupport类中实现WebMvcConfigurer接口，并在SpringMvcConfig类中添加@EnableWebMvc注解来启用Spring MVC配置支持。
+>
+>```java
+>@Configuration
+>public class SpringMvcSupport implements WebMvcConfigurer {
+>    @Override
+>    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+>        registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
+>        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+>        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+>        registry.addResourceHandler("/plugins/**").addResourceLocations("/plugins/");
+>    }
+>}
+>```
+>
+>```java
+>@Configuration
+>@ComponentScan("com.itheima.controller")
+>@EnableWebMvc
+>@Import({SpringMvcSupport.class})
+>public class SpringMvcConfig {
+>    // ...
+>}
+>```
+
 最后我们来看下拦截器的执行流程:
 
 ![1630679464294](assets/1630679464294.png)

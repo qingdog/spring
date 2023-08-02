@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class MyAdvice {
 
-    @Pointcut("execution(* com.itheima.dao.BookDao.*d*(..))")
+    @Pointcut("execution(* com.itheima.dao.BookDao.*se*(..))")
     private void pt(){}
 
     @Around("pt()")

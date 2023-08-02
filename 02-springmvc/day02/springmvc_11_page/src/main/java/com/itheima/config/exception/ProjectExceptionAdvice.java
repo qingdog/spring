@@ -1,7 +1,9 @@
-package com.itheima.controller;
+package com.itheima.config.exception;
 
-import com.itheima.exception.BusinessException;
-import com.itheima.exception.SystemException;
+import com.itheima.config.exception.BusinessException;
+import com.itheima.config.exception.SystemException;
+import com.itheima.controller.Code;
+import com.itheima.controller.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
